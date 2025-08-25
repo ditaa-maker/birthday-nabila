@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAPPY BIRTHDAY NABILAAA🎉</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .page {
+      display: none;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 20px;
+      box-sizing: border-box;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .page.active { display: flex; }
+
+    h1, h2, p { margin: 10px 0; }
+
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      background: #9b59b6;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+    button:hover { background: #8e44ad; }
+
+    /* Balon & Confetti */
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      border-radius: 50%;
+      animation: floatUp 6s linear infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
+    }
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 12px;
+      top: -10px;
+      animation: fall 3s linear forwards;
+    }
+    @keyframes fall {
+      to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Cake */
+    .cake {
+      position: relative;
+      width: 120px;
+      height: 80px;
+      background: #ffb347;
+      border-radius: 8px;
+      margin: 20px auto;
+    }
+    .candle {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 40px;
+      background: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .flame {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: radial-gradient(circle, yellow 60%, orange 90%);
+      border-radius: 50%;
+      animation: flicker 0.3s infinite alternate;
+    }
+    @keyframes flicker {
+      from { transform: translateX(-50%) scale(1); }
+      to { transform: translateX(-50%) scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Halaman 1 -->
+  <div class="page active" id="page1">
+    <h1>🎉 HAPPY 21st BIRTHDAY NABILAAKK 🎂</h1>
+    <p>Click the button below to begin your birthday adventure ✨</p>
+    <button onclick="nextPage(2)">Start 🎁</button>
+  </div>
+
+  <!-- Halaman 2 -->
+  <div class="page" id="page2">
+    <h2>Cheers to 21 years! 🥂🥳</h2>
+    <p class="cake-text">Make a wish and blow out the candles! 🕯️ (click the candle flame)</p>
+
+    <div class="cake">
+      <div class="candle" onclick="blowCandle()">
+        <div class="flame" id="flame"></div>
+      </div>
+    </div>
+
+    <button onclick="nextPage(3)">Next ➡️</button>
+  </div>
+
+  <script>
+    // Halaman
+    function nextPage(n) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page' + n).classList.add('active');
+    }
+
+    // Lilin & confetti
+    function blowCandle() {
+      const flame = document.getElementById("flame");
+      if (flame) {
+        flame.remove();
+        launchConfetti();
+      }
+    }
+
+    function launchConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = getRandomColor();
+        confetti.style.animationDuration = (2 + Math.random() * 2) + "s";
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3000);
+      }
+    }
+
+    function createBalloon() {
+      const balloon = document.createElement("div");
+      balloon.classList.add("balloon");
+      balloon.style.left = Math.random() * 100 + "vw";
+      balloon.style.backgroundColor = getRandomColor();
+      balloon.style.animationDuration = (5 + Math.random() * 3) + "s";
+      document.body.appendChild(balloon);
+      setTimeout(() => balloon.remove(), 8000);
+    }
+
+    function getRandomColor() {
+  const colors = ["#8e44ad", "#3498db", "#9b59b6", "#a29bfe", "#bdc3c7"];
+  return colors[Math.floor(Math.random()*colors.length)];
+    }
+
+    // Balon muncul dari awal
+    setInterval(createBalloon, 700);
+  </script>
+
+</body>
+</html>
+
+<!-- Halaman 3: Gallery -->
+<div class="page" id="page3" style="height: auto;">
+ <h2 style="margin-bottom: 10px;">Our Memories 📸</h2>
+  <p style="font-size:14px; color:gray; max-width:600px; margin:auto; text-align:center; line-height:1.6;">
+    Some photos of us… just realized we don’t have many recent ones together, so most are old memories. Artinya kita mesti ketemu dan main lagi nggak sih buat foto berdua wkwk 🫣😁 <br><br>
+     </p>
+
+  <div class="gallery" style="margin-bottom: 30px; padding-bottom: 20px;">
+    <img src="foto1.jpg" alt="🌻">
+    <img src="foto2.jpg" alt="🌻">
+    <img src="foto3.jpg" alt="🌻">
+    <img src="foto4.jpg" alt="🌻">
+    <img src="foto5.jpg" alt="🌻">
+    <img src="foto6.jpg" alt="🌻">
+    <img src="foto7.jpg" alt="🌻">
+    <img src="foto8.jpg" alt="🌻">
+    <img src="foto9.jpg" alt="🌻">
+    <img src="foto10.jpg" alt="🌻">
+    </div>
+
+  <button onclick="nextPage(4)">Next ➡️</button>
+</div>
+
+<!-- CSS untuk gallery -->
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+  }
+  .gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  }
+</style>
+
+<!-- Halaman 4: Wishes -->
+<div class="page hidden" id="page4">
+  <h2>🌻 21 Wishes for You at 21 🌻</h2>
+  <div class="wishes">
+    <div class="wish">Hope this year brings all the wins you’ve been working for.</div>
+    <div class="wish">May semester 7 treat you nicely.</div>
+    <div class="wish">Stay bossy and strong—it suits you, but don’t forget to chill sometimes.</div>
+    <div class="wish">Hope every project and assignment wraps up without too much stress.</div>
+    <div class="wish">Wishing you little joys every day that make you smile.</div>
+    <div class="wish">May family and friends always feel close, even from far away.</div>
+    <div class="wish">Stay healthy and full of energy for all the crazy days ahead.</div>
+    <div class="wish">Hope your 21-year-old dreams start turning into reality.</div>
+    <div class="wish">May you handle every challenge while staying calm and cool.</div>
+    <div class="wish">May this year be full of stories worth remembering.</div>
+    <div class="wish">May our friendship continue to bloom no matter where life takes us.</div>
+    <div class="wish">Hope you’re always surrounded by good people who lift you up.</div>
+    <div class="wish">May you keep slaying your goals while still having fun.</div>
+    <div class="wish">May every tough day have a silver lining you didn’t expect.</div>
+    <div class="wish">May you bloom beautifully, even when no one is watching.</div>
+    <div class="wish">Hope you always stumble upon little surprises that make your day better.</div>
+    <div class="wish">May your dreams feel closer every time you check them off one by one</div>
+    <div class="wish">Hope you keep being unapologetically yourself and loving it.</div>
+    <div class="wish">May you always know that I’m rooting for you, no matter what.</div>
+    <div class="wish">May your future be brighter and more colorful than your imagination.</div>
+    <div class="wish">And above all, may you be happy, healthy, and absolutely unstoppable!</div>
+  </div>
+  <button onclick="nextPage(5)">Next 🚀</button>
+</div>
+
+<!-- CSS khusus halaman 4 -->
+<style>
+.wishes {
+  max-height: 300px;  /* agar scrollable */
+  overflow-y: auto;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+.wish {
+  background: #fefefe;
+  border-radius: 20px;
+  padding: 12px 18px;
+  margin: 10px auto;
+  max-width: 80%;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  font-size: 15px;
+  text-align: center;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+.wish:hover {
+  background: #ffe7f3;
+  transform: scale(1.05);
+}
+</style>
+
+<!-- Halaman 5: Penutup -->
+<div class="page hidden" id="page5">
+  <h2>Happy Birthday Once Again 🎂</h2>
+  <p>Semoga hari ini jadi awal dari banyak kebahagiaan baru untuk dirimu ya Billzzz 💖</p>
+  <p>From: Ditaa</p>
+
+  <!-- Kue mini -->
+  <div class="cake" style="margin-top:20px;">
+    <div class="candle">
+      <div class="flame" id="finalFlame"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Balon & confetti tambahan untuk page terakhir
+  function createFinalBalloon() {
+    const balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+    balloon.style.left = Math.random() * 100 + "vw";
+    balloon.style.backgroundColor = getRandomColor();
+    balloon.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.getElementById("page6").appendChild(balloon);
+    setTimeout(() => balloon.remove(), 8000);
+  }
+
+  function launchFinalConfetti() {
+    for(let i=0; i<50; i++){
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.backgroundColor = getRandomColor();
+      confetti.style.animationDuration = (2 + Math.random() * 2) + "s";
+      document.getElementById("page6").appendChild(confetti);
+      setTimeout(() => confetti.remove(), 3000);
+    }
+  }
+
+  setInterval(createFinalBalloon, 500);
+  setInterval(launchFinalConfetti, 1000);
+
+  // Flame lilin page akhir
+  const flame = document.getElementById("finalFlame");
+  if(flame){
+    setInterval(() => {
+      flame.style.transform = `translateX(-50%) scale(${1 + Math.random() * 0.3})`;
+    }, 300);
+  }
+
+</script>
